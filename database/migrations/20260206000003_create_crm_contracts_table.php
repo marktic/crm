@@ -47,7 +47,7 @@ final class CreateCrmContractsTable extends AbstractMigration
             ->addIndex(['tenant_id'])
             ->addIndex(['subject_id'])
             ->addIndex(['tenant_id', 'subject_id'])
-            ->addIndex(['contract_number'], ['unique' => true])
+            ->addIndex(['contract_number'])
             ->addIndex(['status'])
             ->addIndex(['start_date', 'end_date'])
             ->create();

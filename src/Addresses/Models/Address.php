@@ -43,7 +43,7 @@ class Address extends CrmRecord
             $this->state,
             $this->postal_code,
             $this->country,
-        ]);
+        ], fn($v) => $v !== null && $v !== '');
 
         return implode(', ', $parts);
     }
