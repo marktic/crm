@@ -17,7 +17,7 @@ use Marktic\Crm\AbstractBase\Models\CrmRecordManager;
 class Contracts extends CrmRecordManager
 {
     public const TABLE = 'mkt_crm_contracts';
-    public const CONTROLLER = 'contracts';
+    public const CONTROLLER = 'mkt_crm-contracts';
 
     /**
      * @return Contract

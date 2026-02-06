@@ -17,7 +17,7 @@ use Marktic\Crm\AbstractBase\Models\CrmRecordManager;
 class Addresses extends CrmRecordManager
 {
     public const TABLE = 'mkt_crm_addresses';
-    public const CONTROLLER = 'addresses';
+    public const CONTROLLER = 'mkt_crm-addresses';
 
     /**
      * @return Address
