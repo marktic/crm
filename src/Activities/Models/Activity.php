@@ -43,6 +43,11 @@ class Activity extends CrmRecord
             return null;
         }
         
-        return date('Y-m-d', strtotime($this->on_date));
+        try {
+            $date = new \DateTime($this->on_date);
+            return $date->format('Y-m-d');
+        } catch (\Exception $e) {
+            return null;
+        }
     }
 }
