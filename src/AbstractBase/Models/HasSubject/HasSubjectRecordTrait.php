@@ -25,4 +25,14 @@ trait HasSubjectRecordTrait
     {
         $this->subject_id = $subjectId;
     }
+
+    /**
+     * Get the SubjectRecord relation
+     * 
+     * @return mixed
+     */
+    public function subjectRecord()
+    {
+        return $this->morphTo('subject');
+    }
 }

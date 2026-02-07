@@ -25,4 +25,14 @@ trait HasTenantRecordTrait
     {
         $this->tenant_id = $tenantId;
     }
+
+    /**
+     * Get the TenantRecord relation
+     * 
+     * @return mixed
+     */
+    public function tenantRecord()
+    {
+        return $this->morphTo('tenant');
+    }
 }
