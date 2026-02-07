@@ -10,13 +10,19 @@ namespace Marktic\Crm\AbstractBase\Models\HasSubject;
  */
 trait HasSubjectRepositoryTrait
 {
-    /**
-     * Get the SubjectRecord relation
-     * 
-     * @return mixed
-     */
-    public function subjectRecord()
+    public function initRelations()
     {
-        return $this->morphTo('subject');
+        parent::initRelations();
+        $this->initRelationsCrm();
+    }
+
+    protected function initRelationsCrm(): void
+    {
+        $this->initRelationsCrmSubject();
+    }
+
+    protected function initRelationsCrmSubject(): void
+    {
+        $this->morphTo('Subject', ['morphPrefix' => 'subject', 'morphTypeField' => 'subject']);
     }
 }

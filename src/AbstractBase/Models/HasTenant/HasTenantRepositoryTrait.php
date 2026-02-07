@@ -10,13 +10,19 @@ namespace Marktic\Crm\AbstractBase\Models\HasTenant;
  */
 trait HasTenantRepositoryTrait
 {
-    /**
-     * Get the TenantRecord relation
-     * 
-     * @return mixed
-     */
-    public function tenantRecord()
+    public function initRelations()
     {
-        return $this->morphTo('tenant');
+        parent::initRelations();
+        $this->initRelationsCrm();
+    }
+
+    protected function initRelationsCrm(): void
+    {
+        $this->initRelationsCrmTenant();
+    }
+
+    protected function initRelationsCrmTenant(): void
+    {
+        $this->morphTo('Tenant', ['morphPrefix' => 'tenant', 'morphTypeField' => 'tenant']);
     }
 }
