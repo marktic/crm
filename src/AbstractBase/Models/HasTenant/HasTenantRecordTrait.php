@@ -10,12 +10,12 @@ use Nip\Records\Record;
  * Trait HasTenantRecordTrait
  * @package Marktic\Crm\AbstractBase\Models\HasTenant
  *
- * @method Record getTenant
+ * @method Record getTenantType
  */
 trait HasTenantRecordTrait
 {
     public string|int|null $tenant_id;
-    public string|null $tenant;
+    public string|null $tenant_type;
 
     /**
      * @return int|null
@@ -39,6 +39,6 @@ trait HasTenantRecordTrait
     public function populateFromTenant($record)
     {
         $this->tenant_id = $record->id;
-        $this->tenant = $record->getManager()->getMorphName();
+        $this->tenant_type = $record->getManager()->getMorphName();
     }
 }

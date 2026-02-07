@@ -3,6 +3,7 @@
 use Marktic\Crm\Addresses\Models\Addresses;
 use Marktic\Crm\Contacts\Models\Contacts;
 use Marktic\Crm\Contracts\Models\Contracts;
+use Marktic\Crm\Utility\CrmModels;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,14 +15,14 @@ use Marktic\Crm\Contracts\Models\Contracts;
 */
 return [
     'models' => [
-        'contacts' => Contacts::class,
-        'addresses' => Addresses::class,
-        'contracts' => Contracts::class,
+        CrmModels::CONTACTS => Contacts::class,
+        CrmModels::ADDRESSES => Addresses::class,
+        CrmModels::CONTRACTS => Contracts::class,
     ],
 
     'tables' => [
-        'contacts' => 'mkt_crm_contacts',
-        'addresses' => 'mkt_crm_addresses',
-        'contracts' => 'mkt_crm_contracts',
+        CrmModels::CONTACTS => Contacts::TABLE,
+        CrmModels::ADDRESSES => Addresses::TABLE,
+        CrmModels::CONTRACTS => Contacts::TABLE,
     ],
 ];

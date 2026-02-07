@@ -10,12 +10,12 @@ use Nip\Records\Record;
  * Trait HasSubjectRecordTrait
  * @package Marktic\Crm\AbstractBase\Models\HasSubject
  *
- * @method Record getSubject
+ * @method Record getSubjectType
  */
 trait HasSubjectRecordTrait
 {
     public string|int|null $subject_id;
-    public string|null $subject;
+    public string|null $subject_type;
 
     /**
      * @return int|null
@@ -39,6 +39,6 @@ trait HasSubjectRecordTrait
     public function populateFromSubject($record)
     {
         $this->subject_id = $record->id;
-        $this->subject = $record->getManager()->getMorphName();
+        $this->subject_type = $record->getManager()->getMorphName();
     }
 }

@@ -23,6 +23,6 @@ trait HasSubjectRepositoryTrait
 
     protected function initRelationsCrmSubject(): void
     {
-        $this->morphTo('Subject', ['morphPrefix' => 'subject', 'morphTypeField' => 'subject']);
+        $this->morphTo('Subject', ['morphPrefix' => 'subject']);
     }
 }

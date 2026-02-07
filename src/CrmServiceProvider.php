@@ -12,6 +12,8 @@ use Bytic\PackageBase\BaseServiceProvider;
  */
 class CrmServiceProvider extends BaseServiceProvider
 {
+    public const NAME = 'mkt_crm';
+
     /**
      * Bootstrap the application services.
      *

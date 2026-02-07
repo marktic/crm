@@ -23,6 +23,6 @@ trait HasTenantRepositoryTrait
 
     protected function initRelationsCrmTenant(): void
     {
-        $this->morphTo('Tenant', ['morphPrefix' => 'tenant', 'morphTypeField' => 'tenant']);
+        $this->morphTo('Tenant', ['morphPrefix' => 'tenant']);
     }
 }
