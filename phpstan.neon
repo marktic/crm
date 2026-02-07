@@ -1,0 +1,6 @@
+includes:
+    - vendor/bytic/phpqatools/phpstan.neon
+parameters:
+    level: 2
+    paths:
+        - src
