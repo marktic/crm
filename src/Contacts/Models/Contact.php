@@ -19,8 +19,6 @@ use Marktic\Crm\AbstractBase\Models\HasSubject\HasSubjectRecordTrait;
  * @property string $last_name
  * @property string $email
  * @property string $phone
- * @property string $mobile
- * @property string $company
  * @property string $position
  * @property string $notes
  * @property string $created_at

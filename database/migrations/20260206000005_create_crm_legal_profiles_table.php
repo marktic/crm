@@ -26,14 +26,16 @@ final class CreateCrmLegalProfilesTable extends AbstractMigration
 
         $this->table($table_name, ['primary_key' => 'id', 'id' => false])
             ->addColumn('id', 'biginteger', ['identity' => true, 'signed' => false])
+            ->addColumn('tenant_type', 'string', ['limit' => 100, 'null' => false])
             ->addColumn('tenant_id', 'integer', ['null' => false, 'signed' => false])
+            ->addColumn('subject_type', 'string', ['limit' => 100, 'null' => false])
             ->addColumn('subject_id', 'biginteger', ['null' => false, 'signed' => false])
-            ->addColumn('fiscal_code', 'string', ['limit' => 100, 'null' => true])
-            ->addColumn('legal_representative', 'string', ['limit' => 255, 'null' => true])
             ->addColumn('company_name', 'string', ['limit' => 255, 'null' => true])
+            ->addColumn('legal_form', 'string', ['limit' => 100, 'null' => true])
+            ->addColumn('fiscal_code', 'string', ['limit' => 100, 'null' => true])
             ->addColumn('registration_number', 'string', ['limit' => 100, 'null' => true])
             ->addColumn('vat_number', 'string', ['limit' => 100, 'null' => true])
-            ->addColumn('legal_form', 'string', ['limit' => 100, 'null' => true])
+            ->addColumn('legal_representative', 'string', ['limit' => 255, 'null' => true])
             ->addColumn('notes', 'text', ['null' => true])
             ->addColumn('updated_at', 'timestamp', [
                 'default' => 'CURRENT_TIMESTAMP',
@@ -42,8 +44,8 @@ final class CreateCrmLegalProfilesTable extends AbstractMigration
             ->addColumn('created_at', 'timestamp', [
                 'default' => 'CURRENT_TIMESTAMP',
             ])
-            ->addIndex(['tenant_id'])
-            ->addIndex(['subject_id'])
+            ->addIndex(['tenant_type', 'tenant_id'])
+            ->addIndex(['subject_type', 'subject_id'])
             ->addIndex(['tenant_id', 'subject_id'])
             ->addIndex(['fiscal_code'])
             ->create();

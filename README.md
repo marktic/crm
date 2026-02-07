@@ -18,7 +18,6 @@ This package provides models and migrations for CRM functionality including cont
 ## Requirements
 
 - PHP >= 8.2
-- Laravel or compatible framework
 
 ## License
 

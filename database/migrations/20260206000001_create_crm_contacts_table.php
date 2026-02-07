@@ -26,14 +26,14 @@ final class CreateCrmContactsTable extends AbstractMigration
 
         $this->table($table_name, ['primary_key' => 'id', 'id' => false])
             ->addColumn('id', 'biginteger', ['identity' => true, 'signed' => false])
+            ->addColumn('tenant_type', 'string', ['limit' => 100, 'null' => false])
             ->addColumn('tenant_id', 'integer', ['null' => false, 'signed' => false])
+            ->addColumn('subject_type', 'string', ['limit' => 100, 'null' => false])
             ->addColumn('subject_id', 'biginteger', ['null' => false, 'signed' => false])
             ->addColumn('first_name', 'string', ['limit' => 100, 'null' => false])
             ->addColumn('last_name', 'string', ['limit' => 100, 'null' => false])
             ->addColumn('email', 'string', ['limit' => 255, 'null' => true])
             ->addColumn('phone', 'string', ['limit' => 50, 'null' => true])
-            ->addColumn('mobile', 'string', ['limit' => 50, 'null' => true])
-            ->addColumn('company', 'string', ['limit' => 255, 'null' => true])
             ->addColumn('position', 'string', ['limit' => 100, 'null' => true])
             ->addColumn('notes', 'text', ['null' => true])
             ->addColumn('updated_at', 'timestamp', [
@@ -43,9 +43,8 @@ final class CreateCrmContactsTable extends AbstractMigration
             ->addColumn('created_at', 'timestamp', [
                 'default' => 'CURRENT_TIMESTAMP',
             ])
-            ->addIndex(['tenant_id'])
-            ->addIndex(['subject_id'])
-            ->addIndex(['tenant_id', 'subject_id'])
+            ->addIndex(['tenant_type', 'tenant_id'])
+            ->addIndex(['subject_type', 'subject_id'])
             ->addIndex(['email'])
             ->create();
     }

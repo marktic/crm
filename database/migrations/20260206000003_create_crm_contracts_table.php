@@ -26,7 +26,9 @@ final class CreateCrmContractsTable extends AbstractMigration
 
         $this->table($table_name, ['primary_key' => 'id', 'id' => false])
             ->addColumn('id', 'biginteger', ['identity' => true, 'signed' => false])
+            ->addColumn('tenant_type', 'string', ['limit' => 100, 'null' => false])
             ->addColumn('tenant_id', 'integer', ['null' => false, 'signed' => false])
+            ->addColumn('subject_type', 'string', ['limit' => 100, 'null' => false])
             ->addColumn('subject_id', 'biginteger', ['null' => false, 'signed' => false])
             ->addColumn('contract_number', 'string', ['limit' => 100, 'null' => true])
             ->addColumn('title', 'string', ['limit' => 255, 'null' => false])
@@ -44,9 +46,8 @@ final class CreateCrmContractsTable extends AbstractMigration
             ->addColumn('created_at', 'timestamp', [
                 'default' => 'CURRENT_TIMESTAMP',
             ])
-            ->addIndex(['tenant_id'])
-            ->addIndex(['subject_id'])
-            ->addIndex(['tenant_id', 'subject_id'])
+            ->addIndex(['tenant_type', 'tenant_id'])
+            ->addIndex(['subject_type', 'subject_id'])
             ->addIndex(['contract_number'])
             ->addIndex(['status'])
             ->addIndex(['start_date', 'end_date'])
