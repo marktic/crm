@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Marktic\Crm\Bundle\Modules\Admin\Controllers;
 
+use Marktic\Crm\Bundle\Modules\Admin\Forms\LegalProfiles\DetailsForm;
 use Marktic\Crm\Utility\CrmModels;
 
 /**
@@ -13,6 +14,11 @@ use Marktic\Crm\Utility\CrmModels;
 trait LegalProfilesControllerTrait
 {
     use AbstractCrmControllerTrait;
+
+    protected function getModelFormClass($model, $action = null): string
+    {
+        return DetailsForm::class;
+    }
 
     protected function generateModelName(): string
     {

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Marktic\Crm\AbstractBase\Models;
 
+use ByTIC\Records\Behaviors\HasForms\HasFormsRecordTrait;
 use Nip\Records\Record;
 
 /**
@@ -13,6 +14,7 @@ use Nip\Records\Record;
 abstract class CrmRecord extends Record
 {
     use \ByTIC\DataObjects\Behaviors\Timestampable\TimestampableTrait;
+    use HasFormsRecordTrait;
 
     /**
      * @var string
