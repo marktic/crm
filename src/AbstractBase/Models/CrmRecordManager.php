@@ -12,4 +12,6 @@ use Nip\Records\RecordManager;
  */
 abstract class CrmRecordManager extends RecordManager
 {
+    use \ByTIC\DataObjects\Behaviors\Timestampable\TimestampableManagerTrait;
+    use HasDatabaseConnectionTrait;
 }
