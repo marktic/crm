@@ -1,1 +1,1 @@
-<?= $this->load('/abstract/view'); ?>
+<?= $this->load('/abstract/edit'); ?>
