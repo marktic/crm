@@ -17,6 +17,11 @@ trait HasSubjectControllerTrait
         $subject = $this->getCrmSubjectFromRequest();
         $record->populateFromSubject($subject);
 
+        if (method_exists($record, 'getCrmTenant')) {
+            $tenant = $record->getCrmTenant();
+            $record->populateFromTenant($tenant);
+        }
+
         return $record;
     }
 
