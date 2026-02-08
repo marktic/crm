@@ -4,50 +4,28 @@ declare(strict_types=1);
 
 namespace Marktic\Crm;
 
-use Bytic\PackageBase\BaseServiceProvider;
+use Bytic\PackageBase\BaseBootableServiceProvider;
+use Marktic\Crm\Utility\PackageConfig;
 
 /**
  * Class CrmServiceProvider
  * @package Marktic\Crm
  */
-class CrmServiceProvider extends BaseServiceProvider
+class CrmServiceProvider extends BaseBootableServiceProvider
 {
     public const NAME = 'mkt_crm';
 
-    /**
-     * Bootstrap the application services.
-     *
-     * @return void
-     */
-    public function boot()
+    public function migrations(): ?string
     {
-        $this->publishes([
-            $this->getConfigFile() => config_path('crm.php'),
-        ], 'config');
+        if (PackageConfig::shouldRunMigrations()) {
+            return dirname(__DIR__) . '/database/migrations/';
+        }
 
-        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+        return null;
     }
 
-    /**
-     * Register the application services.
-     *
-     * @return void
-     */
-    public function register()
+    protected function translationsPath(): ?string
     {
-        $this->mergeConfigFrom(
-            $this->getConfigFile(),
-            'crm'
-        );
-    }
-
-    /**
-     * Get the config file path
-     *
-     * @return string
-     */
-    protected function getConfigFile(): string
-    {
-        return __DIR__ . '/../config/crm.php';
+        return dirname(__DIR__) . '/resources/lang';
     }
 }
