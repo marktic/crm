@@ -20,4 +20,12 @@ abstract class CrmRecordManager extends RecordManager
     use HasFormsRecordsTrait;
 
     use HasDatabaseConnectionTrait;
+
+    /**
+     * @return string
+     */
+    public function getTranslateRoot()
+    {
+        return $this->getController();
+    }
 }
