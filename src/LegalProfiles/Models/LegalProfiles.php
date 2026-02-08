@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Marktic\Crm\LegalProfiles\Models;
 
 use Marktic\Crm\AbstractBase\Models\CrmRecordManager;
+use Marktic\Crm\Utility\CrmModels;
+use Marktic\Crm\Utility\PackageConfig;
 
 /**
  * Class LegalProfiles
@@ -19,11 +21,13 @@ class LegalProfiles extends CrmRecordManager
     public const TABLE = 'mkt_crm_legal_profiles';
     public const CONTROLLER = 'mkt_crm-legal_profiles';
 
-    /**
-     * @return LegalProfile
-     */
-    public function getNewModel(): LegalProfile
+    protected function generateTable(): string
     {
-        return new LegalProfile();
+        return PackageConfig::tableName(CrmModels::LEGAL_PROFILES, self::TABLE);
+    }
+
+    protected function generateController()
+    {
+        return self::CONTROLLER;
     }
 }

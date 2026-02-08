@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Marktic\Crm\Contacts\Models;
 
 use Marktic\Crm\AbstractBase\Models\CrmRecordManager;
+use Marktic\Crm\Utility\CrmModels;
+use Marktic\Crm\Utility\PackageConfig;
 
 /**
  * Class Contacts
@@ -19,11 +21,13 @@ class Contacts extends CrmRecordManager
     public const TABLE = 'mkt_crm_contacts';
     public const CONTROLLER = 'mkt_crm-contacts';
 
-    /**
-     * @return Contact
-     */
-    public function getNewModel(): Contact
+    protected function generateTable(): string
     {
-        return new Contact();
+        return PackageConfig::tableName(CrmModels::CONTACTS, self::TABLE);
+    }
+
+    protected function generateController()
+    {
+        return self::CONTROLLER;
     }
 }

@@ -5,6 +5,9 @@ declare(strict_types=1);
 namespace Marktic\Crm\Addresses\Models;
 
 use Marktic\Crm\AbstractBase\Models\CrmRecordManager;
+use Marktic\Crm\Activities\Models\Activities;
+use Marktic\Crm\Utility\CrmModels;
+use Marktic\Crm\Utility\PackageConfig;
 
 /**
  * Class Addresses
@@ -19,11 +22,13 @@ class Addresses extends CrmRecordManager
     public const TABLE = 'mkt_crm_addresses';
     public const CONTROLLER = 'mkt_crm-addresses';
 
-    /**
-     * @return Address
-     */
-    public function getNewModel(): Address
+    protected function generateTable(): string
     {
-        return new Address();
+        return PackageConfig::tableName(CrmModels::ADDRESSES, self::TABLE);
+    }
+
+    protected function generateController()
+    {
+        return self::CONTROLLER;
     }
 }

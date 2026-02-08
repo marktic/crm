@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Marktic\Crm\Activities\Models;
 
 use Marktic\Crm\AbstractBase\Models\CrmRecordManager;
+use Marktic\Crm\Utility\CrmModels;
+use Marktic\Crm\Utility\PackageConfig;
 
 /**
  * Class Activities
@@ -19,11 +21,13 @@ class Activities extends CrmRecordManager
     public const TABLE = 'mkt_crm_activities';
     public const CONTROLLER = 'mkt_crm-activities';
 
-    /**
-     * @return Activity
-     */
-    public function getNewModel(): Activity
+    protected function generateTable(): string
     {
-        return new Activity();
+        return PackageConfig::tableName(CrmModels::ACTIVITIES, self::TABLE);
+    }
+
+    protected function generateController()
+    {
+        return self::CONTROLLER;
     }
 }

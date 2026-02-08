@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Marktic\Crm\Contracts\Models;
 
 use Marktic\Crm\AbstractBase\Models\CrmRecordManager;
+use Marktic\Crm\Utility\CrmModels;
+use Marktic\Crm\Utility\PackageConfig;
 
 /**
  * Class Contracts
@@ -19,11 +21,13 @@ class Contracts extends CrmRecordManager
     public const TABLE = 'mkt_crm_contracts';
     public const CONTROLLER = 'mkt_crm-contracts';
 
-    /**
-     * @return Contract
-     */
-    public function getNewModel(): Contract
+    protected function generateTable(): string
     {
-        return new Contract();
+        return PackageConfig::tableName(CrmModels::CONTRACTS, self::TABLE);
+    }
+
+    protected function generateController()
+    {
+        return self::CONTROLLER;
     }
 }
