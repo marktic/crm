@@ -34,11 +34,11 @@ trait HasTenantRecordTrait
     }
 
     /**
-     * @param Record $record
+     * @param ?Record $record
      */
     public function populateFromTenant($record)
     {
-        $this->tenant_id = $record->id;
-        $this->tenant_type = $record->getManager()->getMorphName();
+        $this->tenant_id = $record ? $record->id : 0;
+        $this->tenant_type = $record ? $record->getManager()->getMorphName() : '';
     }
 }
