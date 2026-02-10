@@ -20,8 +20,6 @@ class DetailsForm extends FormModel
         $this->initializeLastName();
         $this->initializeEmail();
         $this->initializePhone();
-        $this->initializeMobile();
-        $this->initializeCompany();
         $this->initializePosition();
         $this->initializeNotes();
 
@@ -46,16 +44,6 @@ class DetailsForm extends FormModel
     protected function initializePhone()
     {
         $this->addInput('phone', translator()->trans('phone'), false);
-    }
-
-    protected function initializeMobile()
-    {
-        $this->addInput('mobile', translator()->trans('mobile'), false);
-    }
-
-    protected function initializeCompany()
-    {
-        $this->addInput('company', translator()->trans('company'), false);
     }
 
     protected function initializePosition()
