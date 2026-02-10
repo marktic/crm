@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Marktic\Crm\Contracts\Models;
 
 use Marktic\Crm\AbstractBase\Models\CrmRecordManager;
+use Marktic\Crm\AbstractBase\Models\HasSubject\HasSubjectRepositoryTrait;
+use Marktic\Crm\AbstractBase\Models\HasTenant\HasTenantRepositoryTrait;
 use Marktic\Crm\Utility\CrmModels;
 use Marktic\Crm\Utility\PackageConfig;
 
@@ -20,6 +22,21 @@ class Contracts extends CrmRecordManager
 {
     public const TABLE = 'mkt_crm_contracts';
     public const CONTROLLER = 'mkt_crm-contracts';
+    use HasTenantRepositoryTrait;
+    use HasSubjectRepositoryTrait;
+
+    public function initRelations()
+    {
+        parent::initRelations();
+        $this->initRelationsCrm();
+    }
+
+    protected function initRelationsCrm(): void
+    {
+        $this->initRelationsCrmSubject();
+        $this->initRelationsCrmTenant();
+    }
+
 
     protected function generateTable(): string
     {
