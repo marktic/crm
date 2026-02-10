@@ -9,7 +9,7 @@ trait IsActivitiesSubjectControllerTrait
 {
     use AbstractCrmControllerTrait;
 
-    protected function payloadSetContacts($subject, $tenant = null)
+    protected function payloadSetActivities($subject, $tenant = null)
     {
         $tenant = $tenant ?? $this->getCrmTenant();
         $contacts = FindCrmActivities::for($subject)->withTenant($tenant)->fetch();

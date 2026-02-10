@@ -30,11 +30,11 @@ class DetailsForm extends FormModel
 
     protected function initializeSummary()
     {
-        $this->addTextarea('summary', translator()->trans('summary'), false);
+        $this->addTextSimpleEditor('summary', translator()->trans('summary'), false);
     }
 
     protected function initializeOnDate()
     {
-        $this->addInput('on_date', translator()->trans('on_date'), false);
+        $this->addDateinput('on_date', translator()->trans('on_date'), false);
     }
 }
